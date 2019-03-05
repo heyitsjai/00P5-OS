@@ -1,19 +1,19 @@
 #Package contents
 
 
-createfs
+createfs :
     This program takes a flat source directory (i.e. no subdirectories
     in the source directory) and creates a filesystem image in the
     format specified for this MP.  Run it with no parameters to see
     usage.
 
-elfconvert
+elfconvert:
     This program takes a 32-bit ELF (Executable and Linking Format) file
     - the standard executable type on Linux - and converts it to the
     executable format specified for this MP.  The output filename is
     <exename>.converted.
 
-fish/
+fish/ :
 	This directory contains the source for the fish animation program.
 	It can be compiled two ways - one for your operating system, and one
 	for Linux using an emulation layer.  The Makefile is currently set
@@ -22,7 +22,7 @@ fish/
 	"make fish_emulated".  You can then run fish_emulated as superuser
 	at a standard Linux console, and you should see the fish animation.
 
-fsdir/
+fsdir/ :
 	This is the directory from which your filesystem image was created.
 	It contains versions of cat, fish, grep, hello, ls, and shell, as
 	well as the frame0.txt and frame1.txt files that fish needs to run.
@@ -30,17 +30,17 @@ fsdir/
 	directory and then run the "createfs" utility on it to create a new
 	filesystem image.
 
-README
+README :
     This file.
 
-student-distrib/
+student-distrib/ :
     This is the directory that contains the source code for your
     operating system.  Currently, a skeleton is provided that will build
     and boot you into protected mode, printing out various boot
     parameters.  Read the INSTALL file in that directory for
     instructions on how to set up the bootloader to boot this OS.
 
-syscalls/
+syscalls/ :
     This directory contains a basic system call library that is used by
     the utility programs such as cat, grep, ls, etc.  The library
     provides a C interface to the system calls, much like the C library
