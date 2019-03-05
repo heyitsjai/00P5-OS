@@ -1,0 +1,83 @@
+DEBUGGING MP3 
+===============
+
+The only steps that need to be taken on the virtual machine for debugging
+using qemu is to perform a "sudo make debug" (after "make dep").  This will build the disk image needed for QEMU and gdb.  
+
+Refer to the handout for instructions on starting QEMU and gdb.
+
+#list of major bugs, bugs for days
+
+checkpoint 1
+---------------------------------------------
+Problem: keyboard was not getting character properly
+Solution: Scan code table offsets were not properly made
+--Alan
+
+Problem: keyboard was not recieving characters properly
+Solution: Needed a CLI STI around critical keyboard section to not get interrupted
+--Alan
+
+Problem: IDT was not calling interrupts when expected
+Solution: Fixed assembly linkage 
+--Jai
+Problem: Keyboard spammed characters 
+Solution: syncronization cli, sti 
+--Jai
+
+checkpoint 2
+---------------------------------------------
+Problem: Various page faults for the initialization values in paging.c
+Solution: go with a four kilobyte page size 
+--Gerald
+Problem: Keyboard was not using terminal write reads properly but still displaying to the screen
+Solution: needed to link the functionality for enter and when using terminal read then only write when the flag was offset to write
+--Alan
+
+Problem: Left Right doesn't work on keyboard
+Solution: Work in progress
+--Steven
+
+Problem: RTC was not functional 
+Problem: Needed to be configured to PIC, unmasked 
+-- Jai
+
+checkpoint 3
+---------------------------------------------
+Problem: iterator for read data in filesystem was not initialized making read data start at undefined locations 
+Solution: added a statement to set i equal to zero initially
+--Gerald
+Problem: Halt was not returning to proper return values
+Solution: Previous EBP, ESP were not being pushed properly onto stack to return to proper ring, needed to reorded push to stack
+-- Steven
+
+checkpoint 4
+---------------------------------------------
+Mainly focused on catching up on execute issues during this checkpoint
+
+Problem: Page fault at the end of command calls
+Solution: Halt error, added a PID - 1 to load the previous process
+--Gerald
+Problem: Sometimes while spamming the keyboard our hello prompt won't get the correct name
+Solution: Work in progress
+--Gerald 
+
+checkpoint 5
+---------------------------------------------
+Problem: the PIT was not properly giving interupts
+Solution: active low not set when trying to add the PIT, needed to make a new mask in the PIC
+--Alan
+
+Fixed issue with halt with scheduling, was not correctly updating 
+the previous process number so that each terminal stores the correct 
+process on the screen
+--Gerald
+
+Problem: Text was being overidden when switching terminals 
+Solution: modified putc to account for new terminals
+--Jai
+
+Problem: Fish still appears when switching terminals
+Solution: Work in progress 
+-- Steven
+
