@@ -1,4 +1,4 @@
-#Package contents
+Package contents
 
 
 createfs :
