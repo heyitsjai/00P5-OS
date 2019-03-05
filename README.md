@@ -7,7 +7,7 @@ createfs :
     format specified for this MP.  Run it with no parameters to see
     usage.
 
-elfconvert:
+elfconvert :
     This program takes a 32-bit ELF (Executable and Linking Format) file
     - the standard executable type on Linux - and converts it to the
     executable format specified for this MP.  The output filename is
